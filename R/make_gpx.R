@@ -4,7 +4,7 @@
 #' @param file the file path where the output GPX file should be saved
 #' @param lon_col unquoted name of column containing longitude coordinates
 #' @param lat_col unquoted name of column containing longitude coordinates
-#' @param dt_col unquoted name of column containing date and time of location. The format of date_time must follow YYYY-MM-DD HH:MM:SS or YYYY-MM-DDTHH:MM:SS.
+#' @param dt_col unquoted name of column containing date and time of location. Date and time in are in Universal Coordinated Time (UTC) and must be formatted as %y-%m-%dT%H-%M-%SZ.
 #' @param name_col unquoted name of column containing the name to be assigned to the GPS location
 #' @param desc_col unquoted name of column containing a a description to be assigned to the GPS location
 #'
@@ -39,10 +39,10 @@ make_gpx <- function(x,
   if(!identical(d_t, "")){
     assertthat::assert_that(
       sum(grepl(
-        "^(19[78][0-9]|199[0-9]|20[0-9]{2}|2100)-0*([1-9]|1[0-2])-0*([1-9]|[12][0-9]|3[01])(T| )0*([0-9]|1[0-9]|2[0-4]):0*([0-9]|[1-5][0-9]|60):0*([0-9]|[1-5][0-9]|60)$",
+        "^(19[78][0-9]|199[0-9]|20[0-9]{2}|2100)-0*([1-9]|1[0-2])-0*([1-9]|[12][0-9]|3[01])(T)0*([0-9]|1[0-9]|2[0-4]):0*([0-9]|[1-5][0-9]|60):0*([0-9]|[1-5][0-9]|60)(Z)$",
         d_t
       )) == length(d_t),
-      msg = "In create_gpx, the format of date_time must follow YYYY-MM-DD HH:MM:SS or YYYY-MM-Dd_tHH:MM:SS."
+      msg = "In make_gpx, the format of dt_col must follow %y-%m-%dT%H-%M-%SZ"
     )
   }
 

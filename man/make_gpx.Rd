@@ -15,7 +15,7 @@ make_gpx(x, file, lon_col = lon, lat_col = lat, dt_col, name_col, desc_col)
 
 \item{lat_col}{unquoted name of column containing longitude coordinates}
 
-\item{dt_col}{unquoted name of column containing date and time of location. The format of date_time must follow YYYY-MM-DD HH:MM:SS or YYYY-MM-DDTHH:MM:SS.}
+\item{dt_col}{unquoted name of column containing date and time of location. Date and time in are in Universal Coordinated Time (UTC) and must be formatted as %y-%m-%dT%H-%M-%SZ.}
 
 \item{name_col}{unquoted name of column containing the name to be assigned to the GPS location}
 
